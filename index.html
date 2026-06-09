@@ -1,153 +1,435 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsittaCares | Cuidados de psitácidas</title>
-    <style>
-        /* Estilos generales */
-        body {
-            background-color: #c7f3c4; /* Verde claro */
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: #044a29;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsittaCares</title>
 
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+<style>
 
-        /* Animación del logo */
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-
-        .logo {
-            animation: float 3s ease-in-out infinite;
-            width: 500px; /* Imagen aún más grande */
-        }
-
-
-        @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+:root{
+    --primary:#22c55e;
+    --accent:#e9a703;
+    --secondary:#059669;
+    --bg:#f0fff0;
+    --yellow:#fef973;
 }
 
-.en-construccion {
-    animation: blink 1.5s infinite;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
 }
 
-        /* Títulos */
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #065f46;
-        }
+body{
+    background:var(--bg);
+    color:#064e3b;
+}
 
-        .title2 {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #065f46;
-        }
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    background:radial-gradient(circle at top, #ffffff 0%, var(--bg) 60%);
+}
 
-        .subtitle {
-            font-size: 2rem;
-            color: #047857;
-        }
+/* LOGO GRANDE */
+.logo{
+    width:320px;
+    max-width:80%;
+    animation:float 4s ease-in-out infinite;
+    margin-bottom:15px;
+}
 
-        /* Contador */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 15px;
-        }
+.hero p{
+    max-width:750px;
+    margin-top:10px;
+    font-size:1.2rem;
+    line-height:1.6;
+}
 
-        .countdown-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-            min-width: 100px;
-        }
+/* COUNTDOWN */
+.countdown{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
 
-        .countdown-number {
-            font-size: 4rem;
-            font-weight: 900;
-            color: #a3e635;
-        }
+.box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    min-width:90px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
 
-        .countdown-label {
-            font-size: 1.2rem;
-            color: #86efac;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-    </style>
+.box h2{
+    color:var(--secondary);
+    font-size:2rem;
+}
+
+/* BUTTONS */
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:var(--yellow);
+    color:#333;
+}
+
+.btn-secondary:hover{
+    transform:translateY(-3px);
+}
+
+/* SECTIONS */
+section{
+    padding:80px 20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:var(--primary);
+}
+
+/* GRID 3 COLUMNAS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* BLOQUES */
+.block{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    border-left:6px solid var(--primary);
+}
+
+.block h3{
+    margin-bottom:10px;
+    color:#064e3b;
+}
+
+ul{
+    list-style:none;
+}
+
+li{
+    margin:8px 0;
+    padding-left:20px;
+    position:relative;
+}
+
+li::before{
+    position:absolute;
+    left:0;
+    font-weight:bold;
+}
+
+/* PROBLEMA */
+.problem li::before{
+    content:"❌";
+    color:var(--accent);
+}
+
+/* SOLUCIÓN */
+.solution li::before{
+    content:"✔";
+    color:var(--secondary);
+}
+
+/* ANIMATION */
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+/* NEWSLETTER */
+.newsletter{
+    background:white;
+    padding:60px 20px;
+    text-align:center;
+    margin-top:20px;
+}
+
+.newsletter input{
+    padding:12px;
+    width:280px;
+    max-width:90%;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.newsletter button{
+    padding:12px 18px;
+    border:none;
+    background:var(--primary);
+    color:white;
+    border-radius:10px;
+    margin-left:10px;
+    cursor:pointer;
+}
+
+.newsletter button:hover{
+    background:var(--secondary);
+}
+
+/* FOOTER */
+footer{
+    background:#064e3b;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer p{
+    margin:5px 0;
+}
+
+</style>
 </head>
-<body>
-    <div class="container">
-        <!-- Logo -->
-        <img src="logo2.jpg" alt="Logo" class="logo">
-        
-        <!-- Títulos -->
-        <h1 class="title">Informar, Cuidar y Rescatar</h1>
-        <p class="subtitle en-construccion">En construcción...</p>
 
-        <!-- Contador -->
-        <div class="countdown">
-            <div class="countdown-box">
-                <div class="countdown-number" id="days">28</div>
-                <div class="countdown-label">Días</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-number" id="hours">0</div>
-                <div class="countdown-label">Horas</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-number" id="minutes">0</div>
-                <div class="countdown-label">Minutos</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-number" id="seconds">0</div>
-                <div class="countdown-label">Segundos</div>
-            </div>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+    <!-- LOGO (sin H1) -->
+    <img src="logo2.jpg" class="logo" alt="PsittaCares">
+
+    <p>
+        Plataforma web para la adopción, rescate y educación de aves psitácidas.
+        Fomenta una tenencia responsable mediante inteligencia artificial,
+        análisis de compatibilidad y recursos educativos.
+    </p>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+
+        <div class="box">
+            <h2 id="days">0</h2>
+            <small>Días</small>
         </div>
+
+        <div class="box">
+            <h2 id="hours">0</h2>
+            <small>Horas</small>
+        </div>
+
+        <div class="box">
+            <h2 id="minutes">0</h2>
+            <small>Min</small>
+        </div>
+
+        <div class="box">
+            <h2 id="seconds">0</h2>
+            <small>Seg</small>
+        </div>
+
     </div>
 
-    <script>
-        // Fecha objetivo del contador
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 28); // 28 días desde hoy
+    <!-- BOTONES -->
+    <div class="buttons">
 
-        function updateCountdown() {
-            const now = new Date();
-            const diff = targetDate - now;
+        <a href="#problema" class="btn btn-primary">
+            Conocer el proyecto
+        </a>
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        <a href="#solucion" class="btn btn-secondary">
+            Ver solución
+        </a>
 
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
-        }
+    </div>
 
-        // Inicializar
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+</section>
+
+
+<!-- PROBLEMA -->
+<section id="problema">
+<div class="container">
+
+<h2>El problema</h2>
+
+<div class="grid">
+
+    <div class="block problem">
+        <h3>📚 Información insuficiente</h3>
+        <ul>
+            <li>Desconocimiento de cuidados básicos</li>
+            <li>Falta de educación especializada</li>
+            <li>Interpretación incorrecta del comportamiento</li>
+        </ul>
+    </div>
+
+    <div class="block problem">
+        <h3>🏠 Adopciones impulsivas</h3>
+        <ul>
+            <li>Decisiones sin análisis previo</li>
+            <li>Incompatibilidad con el estilo de vida</li>
+            <li>Alta tasa de abandono</li>
+        </ul>
+    </div>
+
+    <div class="block problem">
+        <h3>🌍 Impacto ambiental</h3>
+        <ul>
+            <li>Pérdida de aves domésticas</li>
+            <li>Riesgo de especies invasoras</li>
+            <li>Falta de sistemas de control</li>
+        </ul>
+    </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SOLUCIÓN -->
+<section id="solucion">
+<div class="container">
+
+<h2>La solución</h2>
+
+<div class="grid">
+
+    <div class="block solution">
+        <h3>📖 Módulo informativo</h3>
+        <ul>
+            <li>Guías completas de especies</li>
+            <li>Información verificada</li>
+            <li>Educación responsable</li>
+        </ul>
+    </div>
+
+    <div class="block solution">
+        <h3>❤️ Módulo de adopción</h3>
+        <ul>
+            <li>Test de compatibilidad</li>
+            <li>Algoritmo inteligente</li>
+            <li>Adopciones responsables</li>
+        </ul>
+    </div>
+
+    <div class="block solution">
+        <h3>🤖 Módulo de rescate</h3>
+        <ul>
+            <li>Base de datos centralizada</li>
+            <li>IA para identificación</li>
+            <li>Recuperación de aves</li>
+        </ul>
+    </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+
+<h2>Suscríbete a las novedades</h2>
+
+<p>Recibe actualizaciones del proyecto PsittaCares</p>
+
+<input type="email" placeholder="Tu correo electrónico">
+<button>Suscribirme</button>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<p><strong>PsittaCares</strong></p>
+<p>Plataforma de adopción y rescate de aves psitácidas</p>
+<p>TFG Ingeniería Informática - UIB</p>
+<p>© 2025</p>
+
+</footer>
+
+
+<script>
+
+// 🎯 Fecha fija de lanzamiento: 1 de diciembre de 2026
+const target = new Date("2026-12-01T00:00:00");
+
+function update(){
+
+    const now = new Date();
+    const diff = target - now;
+
+    if(diff <= 0){
+        document.getElementById("days").innerText = 0;
+        document.getElementById("hours").innerText = 0;
+        document.getElementById("minutes").innerText = 0;
+        document.getElementById("seconds").innerText = 0;
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+// actualizar cada segundo
+setInterval(update, 1000);
+update();
+
+</script>
+
 </body>
 </html>
